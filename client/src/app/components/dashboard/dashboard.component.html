@@ -1,0 +1,31 @@
+<section class="container card p-3 mt-5" >
+ 
+  <section class="row my-5 justify-content-center" >
+
+    <article *ngFor="let user of Users" class="card m-3 d-flex flex-row col-sm-4 col-md-3 col-lg-3 col-xl-2 text-center justify-content-between bg-body-secondary" style="width: 18rem">
+      <figure class="mt-3 d-flex align-items-center">
+        <figure class="mx-2">
+          <span class="fa-regular fa-user fa-xl mt-4"></span>
+        </figure>
+
+        <figcaption class=" ">
+          {{ user.username }}
+        </figcaption>
+      </figure>
+
+      <div class="d-flex align-items-center">
+
+        <button
+        type="button"
+        class="btn btn-primary mx-1"
+        routerLink="/edit/{{ user.id }}"
+        >
+        <span class="fa-regular fa-pen-to-square"></span>
+      </button>
+      <button type="button" class="btn btn-danger" (click)="delUser(user.id!)">
+        <span class="fa-regular fa-trash-can"></span>
+      </button>
+    </div>
+    </article>
+  </section>
+</section>

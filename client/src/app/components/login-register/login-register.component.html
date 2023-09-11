@@ -1,0 +1,74 @@
+<div class="vh-100 container bg-primary-subtle d-flex flex-column justify-content-center align-items-center">
+  <form 
+    class="form-control w-50 text-center my-5 mx-auto "
+    [formGroup]="formloginRegister"
+    (ngSubmit)="loginRegister()"
+  >
+    <label class="form-text mt-5 mb-3">
+      Username:
+      <input
+        formControlName="username"
+        type="text"
+        class="form-control mt-3"
+        placeholder="username"
+      />
+    </label>
+    <br />
+    <span
+      *ngIf="
+        (formloginRegister.get('username')?.hasError('required') ||
+          formloginRegister.get('username')?.hasError('minLength') ||
+          formloginRegister.get('username')?.hasError('maxLength')) &&
+        formloginRegister.get('username')?.touched
+      "
+    >
+      El campo username es <strong>obligatorio</strong>
+    </span>
+    <br />
+    <label class="form-text my-2">
+      Password:
+      <input
+        formControlName="password"
+        type="password"
+        class="form-control mt-3"
+        placeholder="password"
+      />
+    </label>
+    <br />
+    <span
+      *ngIf="
+        (formloginRegister.get('password')?.hasError('required') ||
+          formloginRegister.get('password')?.hasError('minLength') ||
+          formloginRegister.get('password')?.hasError('maxLength')) &&
+        formloginRegister.get('password')?.touched
+      "
+    >
+      El campo password es <strong>obligatorio</strong>
+    </span>
+    <br />
+
+    <input
+      [disabled]="formloginRegister.invalid"
+      *ngIf="!register"
+      type="submit"
+      class="btn btn-primary mt-3 mb-5"
+      value="Login"
+    />
+
+    <input
+      *ngIf="register"
+      [disabled]="formloginRegister.invalid"
+      type="submit"
+      class="btn btn-primary mt-3 mb-5"
+      value="Register"
+    />
+    <div class="bg-info-subtle">
+      <p *ngIf="register" class="small p-1">
+        Already a member? <span class="login_register_toggler" (click)="toggle()">Log in</span>
+      </p>
+      <p *ngIf="!register" class="small p-1">
+        Not a member? <span class="login_register_toggler" (click)="toggle()">Register</span>
+      </p>
+    </div>
+  </form>
+</div>

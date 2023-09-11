@@ -1,0 +1,74 @@
+<section
+  class="vh-100 container d-flex justify-content-center align-items-center text-center"
+>
+  <article class="card d-flex justify-content-center  align-items-center" style="width:20rem; height: 30rem">
+    
+
+        <figure class="mx-2 d-flex  justify-content-center align-items-center">
+            <span class="fa-regular fa-user fa-xl mt-4"></span>
+        </figure>
+        
+        <form class="form-control mt-5 bg-body-tertiary"
+        [formGroup]="formAddUser"
+        (ngSubmit)="addUser()"
+        >
+            <label class="form-text  mb-3">
+                Username:
+                <input
+                  formControlName="username"
+                  type="text"
+                  class="form-control mt-3"
+                  placeholder="username"
+                />
+              </label>
+              <span
+              *ngIf="
+                (formAddUser.get('username')?.hasError('required') ||
+                  formAddUser.get('username')?.hasError('minLength') ||
+                  formAddUser.get('username')?.hasError('maxLength')) &&
+                formAddUser.get('username')?.touched
+              "
+            >
+            El campo username es <strong>obligatorio</strong>
+        </span>
+              <label class="form-text my-2">
+                Password:
+                <input
+                  formControlName="password"
+                  type="password"
+                  class="form-control mt-3"
+                  placeholder="password"
+                />
+              </label>
+              <span
+              *ngIf="
+                (formAddUser.get('password')?.hasError('required') ||
+                  formAddUser.get('password')?.hasError('minLength') ||
+                  formAddUser.get('password')?.hasError('maxLength')) &&
+                formAddUser.get('password')?.touched
+              "
+            >
+            El campo username es <strong>obligatorio</strong>
+        </span>
+              <div class="d-flex justify-content-around">
+
+                  <input
+                  
+                  type="submit"
+                  class="btn btn-primary mt-3 mb-5 "
+                  value="Create"
+                  [disabled]="formAddUser.invalid"
+                  />
+                  
+                  <input
+                  
+                  type="submit"
+                  class="btn btn-danger mt-3 mb-5 "
+                  value="Cancel"
+                  routerLink="/dashboard"
+                  />
+                </div>
+        </form>
+
+  </article>
+</section>

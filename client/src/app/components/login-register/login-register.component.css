@@ -1,0 +1,8 @@
+.login_register_toggler{
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 1rem;
+}
+.login_register_toggler:hover{
+    color: blue;
+}
